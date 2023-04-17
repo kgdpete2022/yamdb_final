@@ -1,9 +1,7 @@
+import Q
 import re
-
-from django.db.models import Q
-
+from django.db.models
 from rest_framework import serializers
-
 from reviews.models import Category, Comments, Genre, Review, Title, User
 
 
