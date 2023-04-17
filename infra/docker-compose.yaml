@@ -10,7 +10,8 @@ services:
       - ./.env
 
   web:
-    build: kgdpete/api_yamdb:latest
+    image: kgdpete/api_yamdb:latest
+    build: ../api_yamdb/
     restart: always
     volumes:
       - static_value:/app/static/
