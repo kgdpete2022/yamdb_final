@@ -1,6 +1,6 @@
-from django.core.validators import RegexValidator
 import os
 from django.conf.global_settings import DATETIME_INPUT_FORMATS
+from django.core.validators import RegexValidator
 from dotenv import load_dotenv
 from pathlib import Path
 

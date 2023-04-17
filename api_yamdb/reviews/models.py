@@ -1,11 +1,9 @@
-from datetime import date
-
-from django.core.validators import (MaxValueValidator, MinValueValidator)
-from django.db import models
-
-from users.models import User
-
 from api_yamdb.settings import VALIDATORS
+from datetime import date
+from django.core.validators 
+from django.db import models
+from users.models import User
+import (MaxValueValidator, MinValueValidator)
 
 
 class Category(models.Model):
