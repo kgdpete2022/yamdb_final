@@ -1,5 +1,5 @@
-from api_yamdb.settings import VALIDATORS
 from datetime import date
+from api_yamdb.settings import VALIDATORS
 from django.core.validators import (MaxValueValidator, MinValueValidator)
 from django.db import models
 from users.models import User
