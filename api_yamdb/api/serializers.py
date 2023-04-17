@@ -21,7 +21,15 @@ class GenreSerializer(serializers.ModelSerializer):
 class TitleCustomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Title
-        fields = ["id", "name", "year", "rating", "description", "genre", "category"]
+        fields = [
+            "id",
+            "name",
+            "year",
+            "rating",
+            "description",
+            "genre",
+            "category",
+        ]
 
 
 class TitlePostSerializer(TitleCustomSerializer):
@@ -49,7 +57,14 @@ class TitleGetSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["username", "email", "first_name", "last_name", "bio", "role"]
+        fields = [
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "bio",
+            "role",
+        ]
 
 
 class UserRegSerializer(serializers.Serializer):
@@ -103,7 +118,8 @@ class ReviewSerializer(serializers.ModelSerializer):
             return data
         if Review.objects.filter(author=author, title=title_id).exists():
             raise serializers.ValidationError(
-                "Пользователь может оставить только" "один отзыв на произведение"
+                "Пользователь может оставить только"
+                "один отзыв на произведение"
             )
         return data
 

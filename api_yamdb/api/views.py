@@ -15,11 +15,17 @@ from reviews.models import Category, Genre, Title, User
 
 from .filters import TitleFilter
 from .permissions import AdminOrReadOnly, AdminOrSuperuser, AuthorOrHigher
-from .serializers import (CategorySerializer, CommentsSerializer,
-                          GenreSerializer, ReviewSerializer,
-                          TitleGetSerializer, TitlePostSerializer,
-                          UserRegSerializer, UserSerializer,
-                          UserTokenSerializer)
+from .serializers import (
+    CategorySerializer,
+    CommentsSerializer,
+    GenreSerializer,
+    ReviewSerializer,
+    TitleGetSerializer,
+    TitlePostSerializer,
+    UserRegSerializer,
+    UserSerializer,
+    UserTokenSerializer,
+)
 
 
 class CustomViewSet(
@@ -89,7 +95,9 @@ class CommentsViewSet(viewsets.ModelViewSet):
 
     def get_review(self):
         title = get_object_or_404(Title, id=self.kwargs.get("title_id"))
-        review = get_object_or_404(title.reviews, id=self.kwargs.get("review_id"))
+        review = get_object_or_404(
+            title.reviews, id=self.kwargs.get("review_id")
+        )
         return review
 
     def get_queryset(self):
@@ -112,7 +120,9 @@ class UserViewSet(viewsets.ModelViewSet):
     http_method_names = ["get", "post", "patch", "delete"]
 
     @action(
-        detail=False, methods=["GET", "PATCH"], permission_classes=[IsAuthenticated]
+        detail=False,
+        methods=["GET", "PATCH"],
+        permission_classes=[IsAuthenticated],
     )
     def me(self, request):
         user = request.user
@@ -120,7 +130,9 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         if request.method == "PATCH":
-            serializer = self.get_serializer(user, data=request.data, partial=True)
+            serializer = self.get_serializer(
+                user, data=request.data, partial=True
+            )
             serializer.is_valid(raise_exception=True)
             serializer.save(role=user.role, partial=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
