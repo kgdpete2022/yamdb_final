@@ -15,17 +15,11 @@ from reviews.models import Category, Genre, Title, User
 
 from .filters import TitleFilter
 from .permissions import AdminOrReadOnly, AdminOrSuperuser, AuthorOrHigher
-from .serializers import (
-    CategorySerializer,
-    CommentsSerializer,
-    GenreSerializer,
-    ReviewSerializer,
-    TitleGetSerializer,
-    TitlePostSerializer,
-    UserRegSerializer,
-    UserSerializer,
-    UserTokenSerializer,
-)
+from .serializers import (CategorySerializer, CommentsSerializer,
+                          GenreSerializer, ReviewSerializer,
+                          TitleGetSerializer, TitlePostSerializer,
+                          UserRegSerializer, UserSerializer,
+                          UserTokenSerializer)
 
 
 class CustomViewSet(
