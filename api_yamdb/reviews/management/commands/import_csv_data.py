@@ -44,7 +44,9 @@ def change_foreign_values(data_csv):
     for field_key, field_value in data_csv.items():
         if field_key in FIELDS.keys():
             field_key0 = FIELDS[field_key][0]
-            data_csv_copy[field_key0] = FIELDS[field_key][1].objects.get(pk=field_value)
+            data_csv_copy[field_key0] = FIELDS[field_key][1].objects.get(
+                pk=field_value
+            )
     return data_csv_copy
 
 
@@ -61,7 +63,9 @@ def load_csv(file_name, class_name):
             table = class_name(**data_csv)
             table.save()
         except (ValueError, IntegrityError) as error:
-            print(f"Ошибка в загружаемых данных. {error}. " f"{table_not_loaded}")
+            print(
+                f"Ошибка в загружаемых данных. {error}. " f"{table_not_loaded}"
+            )
             break
     print(table_loaded)
 

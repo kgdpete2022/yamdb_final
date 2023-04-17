@@ -40,7 +40,10 @@ class Title(models.Model):
     )
     year = models.IntegerField(
         default=1,
-        validators=[MaxValueValidator(date.today().year), MinValueValidator(1)],
+        validators=[
+            MaxValueValidator(date.today().year),
+            MinValueValidator(1),
+        ],
         verbose_name="Дата выхода",
     )
     description = models.TextField(
@@ -69,7 +72,9 @@ class Title(models.Model):
 class GenreTitle(models.Model):
     """Вспомогательный класс, связывающий жанры и произведения."""
 
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, verbose_name="Жанр")
+    genre = models.ForeignKey(
+        Genre, on_delete=models.CASCADE, verbose_name="Жанр"
+    )
     title = models.ForeignKey(
         Title, on_delete=models.CASCADE, verbose_name="произведение"
     )
@@ -98,7 +103,8 @@ class Review(models.Model):
         related_name="reviews",
     )
     score = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)], verbose_name="Оценка"
+        validators=[MinValueValidator(1), MaxValueValidator(10)],
+        verbose_name="Оценка",
     )
     pub_date = models.DateTimeField(
         "pub_date",
@@ -110,7 +116,9 @@ class Review(models.Model):
         verbose_name_plural = "Отзывы"
         ordering = ["pub_date"]
         constraints = [
-            models.UniqueConstraint(fields=["title", "author"], name="unique_review"),
+            models.UniqueConstraint(
+                fields=["title", "author"], name="unique_review"
+            ),
         ]
 
     def __str__(self):
