@@ -35,7 +35,7 @@ def open_csv_file(file_name):
         with open(csv_path, encoding="utf-8") as file:
             return list(csv.reader(file))
     except FileNotFoundError:
-        print(f"Файл {csv_file} н найден.")
+        print(f"Файл {csv_file} не найден.")
 
 
 def change_foreign_values(data_csv):
