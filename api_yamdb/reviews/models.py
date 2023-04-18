@@ -70,7 +70,7 @@ class Title(models.Model):
 
 
 class GenreTitle(models.Model):
-    """Вспомогательный класс, связывающий жанры и произведения."""
+    """Вспомогательный класс,  связывающий жанры и произведения."""
 
     genre = models.ForeignKey(
         Genre, on_delete=models.CASCADE, verbose_name="Жанр"
